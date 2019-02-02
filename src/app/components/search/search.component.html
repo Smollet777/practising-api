@@ -1,0 +1,23 @@
+<mat-toolbar color="primary">
+  <span>Practising API</span>
+  <span class="fill-remaining-space"></span>
+  <form #searchForm="ngForm" (ngSubmit)="search($event)" novalidate autocomplete="off">
+    <mat-form-field>
+      <input matInput value="" [(ngModel)]="Search.query" name="query" #query="ngModel">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+  </form>
+</mat-toolbar>
+
+<mat-card *ngFor="let track of searchResult.data">
+  <mat-card-title-group>
+    <mat-card-title>{{track.title_short}}</mat-card-title>
+    <img mat-card-sm-image src="{{track.album.cover_small}}">
+    <mat-card-subtitle>{{track.title_version}}</mat-card-subtitle>
+  </mat-card-title-group>
+  <mat-card-content>
+    <p>{{track.artist.name}}</p>
+    <audio controls="" name="media">
+      <source src="{{track.preview}}" type="audio/mpeg"></audio>
+  </mat-card-content>
+</mat-card>
