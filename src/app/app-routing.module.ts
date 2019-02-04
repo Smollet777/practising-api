@@ -1,10 +1,11 @@
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { SearchComponent } from './components/search/search.component';
+import { SearchListComponent } from './components/search-list/search-list.component';
+
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', component: SearchComponent, pathMatch: 'full' },
+  { path: '', component: SearchListComponent, pathMatch: 'full' },
   { path: '**', component: NotFoundComponent }];
 
 @NgModule({

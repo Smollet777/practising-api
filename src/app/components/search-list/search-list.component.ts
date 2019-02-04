@@ -1,0 +1,24 @@
+import { Component, OnInit } from '@angular/core';
+
+import { SearchService } from 'src/app/services/search.service';
+import { SearchResult } from 'src/app/models/searchResult';
+
+@Component({
+  selector: 'app-search-list',
+  templateUrl: './search-list.component.html',
+  styleUrls: ['./search-list.component.scss']
+})
+export class SearchListComponent implements OnInit {
+
+  error = '';
+  searchResult: SearchResult;
+
+  constructor(private service: SearchService) { }
+
+  ngOnInit() {
+    this.service.data.subscribe((result: SearchResult) => {
+      this.searchResult = result;
+    }, error => this.error);
+  }
+
+}

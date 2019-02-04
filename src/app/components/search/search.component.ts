@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { SearchService } from 'src/app/services/search.service';
 import { SearchResult } from 'src/app/models/searchResult';
 
@@ -11,7 +12,6 @@ export class SearchComponent implements OnInit {
 
   error = '';
   Search = { query: '' };
-  searchResult = new SearchResult();
 
   constructor(private service: SearchService) { }
 
@@ -21,7 +21,8 @@ export class SearchComponent implements OnInit {
   search(event: Event) {
     event.preventDefault();
     this.service.search(this.Search.query).subscribe((result: SearchResult) => {
-      this.searchResult = result;
+      this.service.updateData(result);
+      this.Search.query = '';
     }, error => this.error);
   }
 
