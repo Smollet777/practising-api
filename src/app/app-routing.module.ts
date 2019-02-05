@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   { path: '', component: SearchListComponent, pathMatch: 'full' },
+  { path: 'artist', loadChildren: './modules/artist.module#ArtistModule' },
   { path: '**', component: NotFoundComponent }];
 
 @NgModule({

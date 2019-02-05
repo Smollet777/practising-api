@@ -6,7 +6,10 @@
     <mat-card-subtitle>{{track.title_version}}</mat-card-subtitle>
   </mat-card-title-group>
   <mat-card-content>
-    <p>{{track.artist.name}} album: {{track.album.title}}</p>
+    <p>
+      <button mat-button routerLink="/artist/{{track.artist.id}}">{{track.artist.name}}</button>
+      <a>album: {{track.album.title}}</a>
+    </p>
     <audio controls="" name="media">
       <source src="{{track.preview}}" type="audio/mpeg"></audio>
   </mat-card-content>

@@ -1,0 +1,11 @@
+<mat-card *ngIf="artist$ | async as artist; else elseBlock">
+  <mat-card-title-group>
+    <img mat-card-lg-image src="{{artist.picture_big}}" alt="{{artist.name}}">
+    <mat-card-title title="Back" (click)="goBack()">{{artist.name}}</mat-card-title>
+    <mat-card-subtitle>{{artist.nb_fan}} fans</mat-card-subtitle>
+  </mat-card-title-group>
+  <mat-card-content>
+    <button mat-button routerLink="/artist/{{artist.id}}/albums">{{artist.nb_album}} albums</button>
+  </mat-card-content>
+</mat-card>
+<ng-template #elseBlock>Loading...</ng-template>

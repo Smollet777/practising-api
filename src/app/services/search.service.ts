@@ -1,4 +1,6 @@
 import { SearchResult } from './../models/searchResult';
+import { Artist } from '../models/artist';
+
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
@@ -7,7 +9,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class SearchService {
-  private baseURL = 'https://cors-anywhere.herokuapp.com/http://api.deezer.com/search?';
+  private baseURL = 'https://cors-anywhere.herokuapp.com/http://api.deezer.com';
   private params = '';
   private dataSource = new BehaviorSubject<SearchResult>(new SearchResult());
   data = this.dataSource.asObservable();
@@ -19,6 +21,10 @@ export class SearchService {
   }
 
   search(query: string): Observable<SearchResult> {
-    return this.http.get<SearchResult>(`${this.baseURL}${this.params}q=${query}`);
+    return this.http.get<SearchResult>(`${this.baseURL}/search?${this.params}q=${query}`);
+  }
+
+  getArtist(id: number): Observable<Artist> {
+    return this.http.get<Artist>(`${this.baseURL}/artist/${id}`);
   }
 }

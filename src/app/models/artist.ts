@@ -9,5 +9,7 @@ export class Artist {
     public picture_big: string,
     public picture_xl: string,
     public tracklist: string,
+    public nb_fan: number,
+    public nb_album: number,
     public type: string) { }
 }
