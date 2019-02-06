@@ -27,4 +27,8 @@ export class SearchService {
   getArtist(id: number): Observable<Artist> {
     return this.http.get<Artist>(`${this.baseURL}/artist/${id}`);
   }
+
+  getAlbums(id: number): Observable<SearchResult> {
+    return this.http.get<SearchResult>(`${this.baseURL}/artist/${id}/albums`);
+  }
 }

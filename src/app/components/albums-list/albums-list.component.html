@@ -1,0 +1,20 @@
+{{error}}
+<div *ngIf="searchResult$ | async as searchResult; else elseBlock">
+
+  <mat-card *ngFor="let album of searchResult.data">
+    <mat-card-title-group>
+      <img routerLink="/album/{{album.id}}" mat-card-lg-image src="{{album.cover_big}}" alt="{{album.title}}">
+      <mat-card-title routerLink="/album/{{album.id}}">{{album.title}}</mat-card-title>
+    </mat-card-title-group>
+    <mat-card-content>
+      <p>
+        {{album.record_type}} released on {{album.release_date}}
+      </p>
+      <p>
+        {{album.fans}} fans
+      </p>
+    </mat-card-content>
+  </mat-card>
+
+</div>
+<ng-template #elseBlock>Loading...</ng-template>

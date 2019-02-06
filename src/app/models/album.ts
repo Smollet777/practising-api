@@ -8,5 +8,10 @@ export class Album {
     public cover_big: string,
     public cover_xl: string,
     public tracklist: string,
+    public genre_id: number,
+    public fans: number,
+    public release_date: string,
+    public record_type: string,
+    public explicit_lyrics: boolean,
     public type: string) { }
 }
