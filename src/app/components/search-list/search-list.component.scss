@@ -1,5 +1,97 @@
-mat-card {
-  margin-bottom: 1px;
+:host {
+
+  .track-list {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+  }
+
+  .track-card {
+    flex: 1 0 calc(25% - 20px);
+    margin-right: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.05);
+
+      .track-info {
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #fff;
+      }
+    }
+
+    &:after {
+      content: '';
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    &__bg {
+      height: 100%;
+      background-size: cover;
+      background-position: center center;
+      border-radius: 4px;
+      //  position: absolute;
+      //  z-index: 0;
+    }
+
+    &__info {
+      position: absolute;
+      display: flex;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      //position: absolute;
+      //z-index: 1;
+    }
+  }
+
+  .track-info {
+    transition: background-color 0.2s ease-in-out;
+    display: flex;
+    height: calc(100% - 20px);
+    width: calc(100% - 20px);
+    padding: 10px;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.5);
+
+    &__artist {
+
+    }
+
+    &__name {
+      font-size: 32px;
+    }
+
+    &__album {
+
+    }
+  }
+
+  //:after{
+  //  content: '';
+  //  display: block;
+  //  padding-bottom: 100%;
+  //}
+  //
+  //mat-card {
+  //  flex: 1 0 calc(25% - 20px);
+  //  transition: all 0.2s ease-in-out;
+  //  margin-right: 20px;
+  //  margin-bottom: 20px;
+  //  background-size: cover;
+  //  background-position: center center;
+  //
+  //  &:hover {
+  //    transform: scale(1.05);
+  //  }
+  //}
 }
 
 audio {

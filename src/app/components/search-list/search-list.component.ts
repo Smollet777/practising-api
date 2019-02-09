@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { SearchResult } from 'src/app/models/searchResult';
 import { SearchService } from 'src/app/services/search.service';
+import { Track } from '../../interfaces/track.interface';
 
 @Component({
   selector: 'app-search-list',
@@ -10,7 +11,7 @@ import { SearchService } from 'src/app/services/search.service';
 })
 export class SearchListComponent implements OnInit {
 
-  searchResult: SearchResult;
+  searchResult: SearchResult<Track>;
 
   constructor(private service: SearchService) { }
 

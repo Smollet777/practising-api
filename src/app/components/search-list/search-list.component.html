@@ -1,12 +1,45 @@
-<mat-card *ngFor="let track of searchResult.data">
-  <mat-card-title-group>
-    <mat-card-title>{{track.title_short}}</mat-card-title>
-    <img mat-card-sm-image src="{{track.album.cover_small}}">
-    <mat-card-subtitle>{{track.title_version}}</mat-card-subtitle>
-  </mat-card-title-group>
-  <mat-card-content>
-    <p>{{track.artist.name}}</p>
-    <audio controls="" name="media">
-      <source src="{{track.preview}}" type="audio/mpeg"></audio>
-  </mat-card-content>
-</mat-card>
+<div class="track-list">
+  <div
+    class="track-card"
+    *ngFor="let track of searchResult.data"
+  >
+    <div
+      class="track-card__bg"
+      [ngStyle]="{'background-image': 'url(' + track.album.cover_xl + ')'}"
+    ></div>
+    <div class="track-card__info">
+      <audio controls="" name="media" style="display: none;">
+        <source [src]="track.preview" type="audio/mpeg">
+      </audio>
+      <div class="track-info">
+        <div class="track-info__artist">
+          {{ track.artist.name }}
+        </div>
+        <div class="track-info__name">
+          {{ track.title_short }}
+        </div>
+        <div class="track-info__album">
+          {{ track.album.title}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--<mat-card-->
+  <!--*ngFor="let track of searchResult.data"-->
+  <!--[ngStyle]="{'background-image': 'url(' + track.album.cover_xl + ')'}"-->
+<!--&gt;-->
+  <!--<mat-card-title-group>-->
+    <!--<mat-card-title>-->
+      <!--{{ track.title_short }}-->
+    <!--</mat-card-title>-->
+    <!--<mat-card-subtitle>-->
+      <!--{{ track.title_version }}-->
+    <!--</mat-card-subtitle>-->
+  <!--</mat-card-title-group>-->
+  <!--<mat-card-content>-->
+    <!--<p>{{ track.artist.name }}</p>-->
+    <!--<audio controls="" name="media">-->
+      <!--<source [src]="track.preview" type="audio/mpeg"></audio>-->
+  <!--</mat-card-content>-->
+<!--</mat-card>-->
