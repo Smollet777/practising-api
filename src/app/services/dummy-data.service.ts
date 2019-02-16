@@ -966,7 +966,7 @@ export class DummyDataService {
 
   constructor() { }
 
-  get searchResults(): SearchResult {
+  get searchResults(): SearchResult<any> {
     return this._searchResults;
   }
 

@@ -1,27 +1,36 @@
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
-import { DummyDataService } from './dummy-data.service';
 import { SearchResult } from './../models/searchResult';
+import { Track } from 'src/app/interfaces/track';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SearchService {
 
-  baseUrl = environment.baseUrl;
-  private dataSource = new BehaviorSubject<SearchResult>(this.dummy.searchResults);
-  data = this.dataSource.asObservable();
+  private _query: string;
+  private querySubject = new Subject<string>();
+  private baseUrl = environment.baseUrl;
 
-  constructor(private http: HttpClient, private dummy: DummyDataService) { }
+  constructor(private http: HttpClient) { }
 
-  updateData(data: SearchResult) {
-    this.dataSource.next(data);
+  set query(query: string) {
+    this._query = query;
+    this.querySubject.next(query);
   }
 
-  search(term: string): Observable<SearchResult> {
-    return this.http.get<SearchResult>(`${this.baseUrl}/search?q=${term}`);
+  get query(): string {
+    return this._query;
+  }
+
+  get query$(): Observable<string> {
+    return this.querySubject.asObservable();
+  }
+
+  search(term: string): Observable<SearchResult<Track>> {
+    return this.http.get<SearchResult<Track>>(`${this.baseUrl}/search?q=${term}&limit=12`);
   }
 }
