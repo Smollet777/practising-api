@@ -1,0 +1,22 @@
+<div class="track-list" *ngIf="searchResult$ | async as searchResult; else elseBlock">
+  <div class="track-card" *ngFor="let track of searchResult.data">
+    <div class="track-card__bg" [ngStyle]="{'background-image': 'url(' + track.album.cover_xl + ')'}"></div>
+    <div class="track-card__content">
+      <div class="track-info">
+        <div class="track-info__artist" routerLink="/artist/{{track.artist.id}}">
+          {{ track.artist.name }}
+        </div>
+        <div class="track-info__name">
+          {{ track.title_short }}
+        </div>
+        <div class="track-info__album" routerLink="/album/{{track.album.id}}">
+          {{ track.album.title}}
+        </div>
+      </div>
+      <audio controls="" name="media" preload="none">
+        <source [src]="track.preview" type="audio/mpeg">
+      </audio>
+    </div>
+  </div>
+</div>
+<ng-template #elseBlock>Loading...</ng-template>
