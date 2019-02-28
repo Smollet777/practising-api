@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-not-found',
@@ -9,11 +9,6 @@ import { Component, OnInit } from '@angular/core';
   `,
   styles: ['div { text-align: center }']
 })
-export class NotFoundComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
+export class NotFoundComponent {
 
 }

@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
-import { debounceTime, distinctUntilChanged, takeUntil, filter, map } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged, filter, map, takeUntil } from 'rxjs/operators';
 
 import { SearchService } from '../../services/search.service';
 
@@ -15,11 +15,11 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   searchField = new FormControl();
 
-  private destroyedSubject = new Subject<void>();
+  private readonly destroyedSubject = new Subject<void>();
 
-  constructor(private searchService: SearchService) { }
+  constructor(private readonly searchService: SearchService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.searchField
       .valueChanges
       .pipe(

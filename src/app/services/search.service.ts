@@ -1,10 +1,10 @@
-import { environment } from './../../environments/environment';
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
+import { environment } from './../../environments/environment';
 
-import { SearchResult } from './../models/searchResult';
 import { Track } from '../interfaces/track';
+import { SearchResult } from '../models/search-result';
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +12,10 @@ import { Track } from '../interfaces/track';
 export class SearchService {
 
   private _query: string;
-  private querySubject = new Subject<string>();
-  private baseUrl = environment.baseUrl;
+  private readonly querySubject = new Subject<string>();
+  private readonly baseUrl = environment.baseUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private readonly http: HttpClient) { }
 
   set query(query: string) {
     this._query = query;
