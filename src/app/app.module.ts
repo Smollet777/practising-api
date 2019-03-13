@@ -11,13 +11,17 @@ import { MaterialModule } from './modules/material.module';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { SearchListComponent } from './components/search-list/search-list.component';
 import { SearchComponent } from './components/search/search.component';
+import { HoursMinutesSecondsPipe } from './pipes/hours-minutes-seconds.pipe';
+import { PlayerComponent } from './components/player/player.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NotFoundComponent,
     SearchComponent,
-    SearchListComponent
+    SearchListComponent,
+    HoursMinutesSecondsPipe,
+    PlayerComponent
   ],
   imports: [
     BrowserModule,
