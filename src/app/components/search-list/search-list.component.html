@@ -6,16 +6,13 @@
         <div class="track-info__artist" routerLink="/artist/{{track.artist.id}}">
           {{ track.artist.name }}
         </div>
-        <div class="track-info__name">
+        <div class="track-info__name" (click)="play(track)">
           {{ track.title_short }}
         </div>
         <div class="track-info__album" routerLink="/album/{{track.album.id}}">
           {{ track.album.title }}
         </div>
       </div>
-      <audio controls="" name="media" preload="none">
-        <source [src]="track.preview" type="audio/mpeg">
-      </audio>
     </div>
   </div>
 </div>

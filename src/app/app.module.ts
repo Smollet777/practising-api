@@ -9,15 +9,19 @@ import { AppComponent } from './app.component';
 import { MaterialModule } from './modules/material.module';
 
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { PlayerComponent } from './components/player/player.component';
 import { SearchListComponent } from './components/search-list/search-list.component';
 import { SearchComponent } from './components/search/search.component';
+import { HoursMinutesSecondsPipe } from './pipes/hours-minutes-seconds.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     NotFoundComponent,
     SearchComponent,
-    SearchListComponent
+    SearchListComponent,
+    PlayerComponent,
+    HoursMinutesSecondsPipe
   ],
   imports: [
     BrowserModule,
