@@ -4,6 +4,8 @@
   ],
   "extends": ["angular-tslint-rules"],
   "rules": {
+    "no-null-keyword": false,
+    "array-type": [true, "array"],
     "deprecation": {
       "severity": "warn"
     },
