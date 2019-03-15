@@ -23,7 +23,14 @@ export class PlayerComponent implements OnInit, OnDestroy {
 
   audio: HTMLAudioElement;
 
+  private _isAutoplay = true;
+  private readonly autoplayDelay = 1000;
+
   private readonly destroyedSubject = new Subject<void>();
+
+  get isAutoplay(): boolean {
+    return this._isAutoplay;
+  }
 
   constructor(
     private readonly playerService: PlayerService,
@@ -68,6 +75,9 @@ export class PlayerComponent implements OnInit, OnDestroy {
           () => {
             this.changeDetectorRef.markForCheck();
             this.isPlaying = false;
+            if (this.isAutoplay) {
+              setTimeout(() => this.nextTrack(), this.autoplayDelay);
+            }
           }
         );
       });
@@ -95,6 +105,10 @@ export class PlayerComponent implements OnInit, OnDestroy {
 
   getPercentageProgress(): number {
     return (100 / (this.audio.duration / this.audio.currentTime)) || Number(0);
+  }
+
+  toggleIsAutoplay(): void {
+    this._isAutoplay = !this._isAutoplay;
   }
 
   private cleanupAudio(): void {

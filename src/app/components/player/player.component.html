@@ -29,6 +29,10 @@
         <i class="material-icons" [class.material-icons_disabled]="isLast" (click)="nextTrack()" aria-hidden="false">
           skip_next
         </i>
+        <i class="material-icons" [class.material-icons_inactive]="!isAutoplay" (click)="toggleIsAutoplay()"
+          aria-hidden="false">
+          playlist_play
+        </i>
       </div>
     </ng-container>
   </div>
