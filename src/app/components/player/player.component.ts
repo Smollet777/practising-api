@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -22,6 +23,8 @@ export class PlayerComponent implements OnInit, OnDestroy {
   isLast: boolean;
 
   audio: HTMLAudioElement;
+
+  progressbar = new FormControl();
 
   private _isAutoplay = true;
   private readonly autoplayDelay = 1000;
@@ -65,9 +68,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
 
         audio.addEventListener(
           'timeupdate',
-          () => {
-            this.changeDetectorRef.markForCheck();
-          }
+          this.onAudioTimeUpdate
         );
 
         audio.addEventListener(
@@ -83,9 +84,20 @@ export class PlayerComponent implements OnInit, OnDestroy {
       });
   }
 
-  prevTrack(): void {
-    this.playerService.prevTrack();
-    this.setControls();
+  onAudioTimeUpdate = () => {
+    this.changeDetectorRef.markForCheck();
+    this.progressbar.setValue(
+      this.getPercentageProgress()
+    );
+  };
+
+  onProgressbarInput(): void {
+    this.audio.removeEventListener('timeupdate', this.onAudioTimeUpdate);
+  }
+
+  onProgressbarChange(): void {
+    this.audio.currentTime = (this.progressbar.value / 100) * this.audio.duration;
+    this.audio.addEventListener('timeupdate', this.onAudioTimeUpdate);
   }
 
   playPause(): void {
@@ -98,17 +110,26 @@ export class PlayerComponent implements OnInit, OnDestroy {
     }
   }
 
+  prevTrack(): void {
+    this.playerService.prevTrack();
+    this.setControls();
+  }
+
   nextTrack(): void {
     this.playerService.nextTrack();
     this.setControls();
   }
 
-  getPercentageProgress(): number {
-    return (100 / (this.audio.duration / this.audio.currentTime)) || Number(0);
-  }
-
   toggleIsAutoplay(): void {
     this._isAutoplay = !this._isAutoplay;
+  }
+
+  private getPercentageProgress(): number {
+    if (this.audio) {
+      return Math.floor((100 / (this.audio.duration / this.audio.currentTime)));
+    }
+
+    return 0;
   }
 
   private cleanupAudio(): void {
