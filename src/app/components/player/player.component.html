@@ -6,7 +6,7 @@
     <ng-container *ngIf="audio">
       <div class="player-duration">
         <div class="player-duration__curr-time">
-          {{ audio.currentTime | hoursMinutesSeconds }}
+          {{ progressbar.value | percentsIntoTime:audio.duration | hoursMinutesSeconds }}
         </div>
         <div class="player-duration__progressbar">
           <input type="range" min="1" max="100" value="0" class="progressbar" [formControl]="progressbar"

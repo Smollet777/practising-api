@@ -75,10 +75,10 @@ export class PlayerComponent implements OnInit, OnDestroy {
           'ended',
           () => {
             this.changeDetectorRef.markForCheck();
-            this.isPlaying = false;
-            if (this.isAutoplay) {
+            if (this.isAutoplay && this.isPlaying) {
               setTimeout(() => this.nextTrack(), this.autoplayDelay);
             }
+            this.isPlaying = false;
           }
         );
       });
