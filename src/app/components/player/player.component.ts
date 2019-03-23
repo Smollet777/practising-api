@@ -26,10 +26,15 @@ export class PlayerComponent implements OnInit, OnDestroy {
 
   progressbar = new FormControl();
 
+  private _isRandom = false;
   private _isAutoplay = true;
   private readonly autoplayDelay = 1000;
 
   private readonly destroyedSubject = new Subject<void>();
+
+  get isRandom(): boolean {
+    return this._isRandom;
+  }
 
   get isAutoplay(): boolean {
     return this._isAutoplay;
@@ -111,13 +116,30 @@ export class PlayerComponent implements OnInit, OnDestroy {
   }
 
   prevTrack(): void {
-    this.playerService.prevTrack();
-    this.setControls();
+    if (this.isRandom) {
+      this.playerService.randomTrack();
+      this.resetControls();
+    } else {
+      this.playerService.prevTrack();
+      this.setControls();
+    }
   }
 
   nextTrack(): void {
-    this.playerService.nextTrack();
-    this.setControls();
+    if (this.isRandom) {
+      this.playerService.randomTrack();
+      this.resetControls();
+    } else {
+      this.playerService.nextTrack();
+      this.setControls();
+    }
+  }
+
+  toggleIsRandom(): void {
+    this._isRandom = !this._isRandom;
+    this._isRandom ?
+      this.resetControls() :
+      this.setControls();
   }
 
   toggleIsAutoplay(): void {
@@ -146,6 +168,11 @@ export class PlayerComponent implements OnInit, OnDestroy {
   private setControls(): void {
     this.isFirst = this.playerService.currentTrackIndex() === 0;
     this.isLast = this.playerService.currentTrackIndex() === this.playerService.queue.length - 1;
+  }
+
+  private resetControls(): void {
+    this.isFirst = false;
+    this.isLast = false;
   }
 
   ngOnDestroy(): void {

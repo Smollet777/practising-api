@@ -18,6 +18,10 @@
         </div>
       </div>
       <div class="player-buttons">
+        <i class="material-icons" [class.material-icons_inactive]="!isRandom" (click)="toggleIsRandom()"
+          aria-hidden="false">
+          shuffle
+        </i>
         <i class="material-icons" [class.material-icons_disabled]="isFirst" (click)="prevTrack()" aria-hidden="false">
           skip_previous
         </i>

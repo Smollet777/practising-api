@@ -61,6 +61,11 @@ export class PlayerService {
     this.currentTrack = this.queue[currTrackIndex + 1];
   }
 
+  randomTrack(): void {
+    const random = Math.floor(Math.random() * this.queue.length);
+    this.currentTrack = this.queue[random];
+  }
+
   currentTrackIndex(): number {
     return this.queue.indexOf(this.currentTrack);
   }
