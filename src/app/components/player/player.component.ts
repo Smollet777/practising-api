@@ -26,6 +26,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
 
   progressbar = new FormControl();
 
+  private _isRandom = false;
   private _isAutoplay = true;
   private readonly autoplayDelay = 1000;
 
@@ -33,6 +34,10 @@ export class PlayerComponent implements OnInit, OnDestroy {
 
   get isAutoplay(): boolean {
     return this._isAutoplay;
+  }
+
+  get isRandom(): boolean {
+    return this._isRandom;
   }
 
   constructor(
@@ -77,7 +82,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
             this.changeDetectorRef.markForCheck();
             this.isPlaying = false;
             if (this.isAutoplay) {
-              setTimeout(() => this.nextTrack(), this.autoplayDelay);
+                setTimeout(() => this.nextTrack(), this.autoplayDelay);
             }
           }
         );
@@ -111,17 +116,29 @@ export class PlayerComponent implements OnInit, OnDestroy {
   }
 
   prevTrack(): void {
-    this.playerService.prevTrack();
+    if (this.isRandom) {
+      this.playerService.randomTrack();
+    } else {
+      this.playerService.prevTrack();
+    }
     this.setControls();
   }
 
   nextTrack(): void {
-    this.playerService.nextTrack();
+    if (this.isRandom) {
+      this.playerService.randomTrack();
+    } else {
+      this.playerService.nextTrack();
+    }
     this.setControls();
   }
 
   toggleIsAutoplay(): void {
     this._isAutoplay = !this._isAutoplay;
+  }
+
+  toggleIsRandom(): void {
+    this._isRandom = !this._isRandom;
   }
 
   private getPercentageProgress(): number {
