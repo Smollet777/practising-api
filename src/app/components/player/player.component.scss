@@ -1,8 +1,26 @@
+$player-color: white;
+$player-controls:black;
+$player-controls_disabled: lighten($player-controls, 50%);
+
+@mixin progressbarSlider {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: $player-controls;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover,
+  &:active {
+    transform: scale(1.5);
+  }
+}
+
 .player {
   width: 100%;
   position: fixed;
   bottom: 0;
-  background-color: #fff;
+  background-color: $player-color;
   padding: 10px 0;
 
   &__name {
@@ -15,7 +33,7 @@
 
   &__curr-time,
   &__total-time {
-    color: black;
+    color: $player-controls;
     flex: 0.15;
     text-align: center;
   }
@@ -24,6 +42,7 @@
     display: flex;
     flex: 0.7;
     align-items: center;
+    position: relative;
   }
 }
 
@@ -42,8 +61,12 @@
       transform: scale(1.1);
     }
 
+    &_inactive,
     &_disabled {
-      opacity: .5;
+      color: $player-controls_disabled;
+    }
+
+    &_disabled {
       cursor: default;
 
       &:hover {
@@ -54,31 +77,40 @@
 }
 
 .progressbar {
+  -webkit-appearance: none;
   width: 100%;
   height: 3px;
+  background-color: $player-controls_disabled;
+  outline: none;
 
   &__progress {
-    position: relative;
-    background-color: black;
-    height: 100%;
-    z-index: 0;
+    pointer-events: none;
+    position: absolute;
+    background-color: $player-controls;
+    height: 3px;
+    width: 100%;
+    transform-origin: left center;
+    will-change: transform;
+  }
 
-    &__circle {
-      transition: all 0.2s ease-in-out;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      position: absolute;
-      left: 100%;
-      top: -4px;
-      background-color: black;
-      cursor: pointer;
-      z-index: 1;
+  &::-ms-track {
+    width: 100%;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+  }
 
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    @include progressbarSlider()
+  }
 
-      &:hover {
-        transform: scale(1.5);
-      }
-    }
+  &::-moz-range-thumb {
+    @include progressbarSlider()
+  }
+
+  &::-ms-thumb {
+    @include progressbarSlider()
   }
 }

@@ -22,6 +22,12 @@
     "i18n": [
       true,
       "check-id"
+    ],
+    "no-void-expression": [true, "ignore-arrow-function-shorthand"],
+    "member-ordering": [
+      true,
+      "static-before-instance",
+      "variables-before-functions"
     ]
   }
 }
