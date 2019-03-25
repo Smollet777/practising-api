@@ -1,0 +1,41 @@
+<div class="player" *ngIf="track">
+  <div class="player__name">
+    {{ track.artist.name }} - {{ track.title }}
+  </div>
+  <div class="player__controls">
+    <ng-container *ngIf="audio">
+      <div class="player-duration">
+        <div class="player-duration__curr-time">
+          {{ progressbar.value | percentsIntoTime:audio.duration | hoursMinutesSeconds }}
+        </div>
+        <div class="player-duration__progressbar">
+          <input type="range" min="1" max="100" value="0" class="progressbar" [formControl]="progressbar"
+            (change)="onProgressbarChange()" (input)="onProgressbarInput()">
+          <div class="progressbar__progress" [ngStyle]="{ transform: 'scaleX('+(progressbar.value/100)+')'}"></div>
+        </div>
+        <div class="player-duration__total-time">
+          {{ audio.duration | hoursMinutesSeconds }}
+        </div>
+      </div>
+      <div class="player-buttons">
+        <i class="material-icons" [class.material-icons_inactive]="!isRandom" (click)="toggleIsRandom()"
+          aria-hidden="false">
+          shuffle
+        </i>
+        <i class="material-icons" [class.material-icons_disabled]="isFirst" (click)="prevTrack()" aria-hidden="false">
+          skip_previous
+        </i>
+        <i class="material-icons" (click)="playPause()" aria-hidden="false">
+          {{ isPlaying ? 'pause' : 'play_arrow' }}
+        </i>
+        <i class="material-icons" [class.material-icons_disabled]="isLast" (click)="nextTrack()" aria-hidden="false">
+          skip_next
+        </i>
+        <i class="material-icons" [class.material-icons_inactive]="!isAutoplay" (click)="toggleIsAutoplay()"
+          aria-hidden="false">
+          playlist_play
+        </i>
+      </div>
+    </ng-container>
+  </div>
+</div>
