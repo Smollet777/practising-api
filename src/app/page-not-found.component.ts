@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-not-found',
+  selector: 'app-page-not-found',
   template: `
     <div>
     <h1>404 page not found!</h1>
@@ -9,6 +9,4 @@ import { Component } from '@angular/core';
   `,
   styles: ['div { text-align: center }']
 })
-export class NotFoundComponent {
-
-}
+export class PageNotFoundComponent { }
