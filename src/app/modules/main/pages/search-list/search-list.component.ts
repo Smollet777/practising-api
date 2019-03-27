@@ -3,10 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { startWith, switchMap, tap } from 'rxjs/operators';
 
-import { Track } from '../../interfaces/track';
-import { SearchResult } from '../../models/search-result';
-import { SearchService } from '../../services/search.service';
-import { PlayerService } from './../../services/player.service';
+import { SearchListService } from '../../../../core/http/search-list.service';
+import { PlayerService } from '../../../../core/services/player.service';
+import { SearchService } from '../../../../core/services/search.service';
+
+import { Track } from '../../../../interfaces/track';
+import { SearchResult } from '../../../../shared/models/search-result';
 
 @Component({
   selector: 'app-search-list',
@@ -19,13 +21,14 @@ export class SearchListComponent implements OnInit {
 
   constructor(
     private readonly searchService: SearchService,
+    private readonly searchListService: SearchListService,
     private readonly playerService: PlayerService
   ) { }
 
   ngOnInit(): void {
     this.searchResult$ = this.searchService.query$.pipe(
       startWith('blackpink'),
-      switchMap((term: string) => this.searchService.search(term)),
+      switchMap((term: string) => this.searchListService.search(term)),
       tap((result: SearchResult<Track>) => this.playerService.queue = result.data)
     );
   }

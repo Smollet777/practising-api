@@ -4,8 +4,8 @@ import { FormControl } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { Track } from '../../interfaces/track';
-import { PlayerService } from '../../services/player.service';
+import { PlayerService } from '../../../core/services/player.service';
+import { Track } from '../../../interfaces/track';
 
 @Component({
   selector: 'app-player',
