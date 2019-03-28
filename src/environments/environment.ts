@@ -5,6 +5,7 @@
 
 export const environment = {
   production: false,
+  hmr: false,
   baseUrl: 'https://warm-peak-37747.herokuapp.com/http://api.deezer.com'
 };
 

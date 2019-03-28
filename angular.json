@@ -33,6 +33,12 @@
             "scripts": []
           },
           "configurations": {
+            "hmr": {
+              "fileReplacements": [{
+                "replace": "src/environments/environment.ts",
+                "with": "src/environments/environment.hmr.ts"
+              }]
+            },
             "production": {
               "fileReplacements": [{
                 "replace": "src/environments/environment.ts",
@@ -61,6 +67,11 @@
             "browserTarget": "practising-api:build"
           },
           "configurations": {
+            "hmr": {
+              "hmr": true,
+              "hmrWarning": false,
+              "browserTarget": "practising-api:build:hmr"
+            },
             "production": {
               "browserTarget": "practising-api:build:production"
             }
