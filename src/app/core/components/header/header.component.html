@@ -1,5 +1,6 @@
-<mat-toolbar color="primary">
-  <span class="brand">Practising API</span>
-  <span class="fill-remaining-space"></span>
-  <app-search></app-search>
-</mat-toolbar>
+  <header [@toggle]="visibility">
+    <a routerLink="/" class="brand">Practising API</a>
+    <span class="fill-remaining-space"></span>
+    <app-search></app-search>
+  </header>
+  <div class="fill-header-height"></div>
