@@ -1,3 +1,20 @@
-.mat-icon {
-  font-size: 1em;
+.form-field {
+  border-bottom: 2px solid black;
+}
+
+.search {
+  &__input {
+    background: transparent;
+    border: 0;
+    outline: none;
+
+    &::-webkit-search-cancel-button {
+      font-size: 5em;
+      cursor: pointer;
+    }
+  }
+
+  &__icon {
+    transform: translateY(25%);
+  }
 }
