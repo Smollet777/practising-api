@@ -1,6 +1,5 @@
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import 'hammerjs';
 import { hmrBootstrap } from './hmr';
 
 import { AppModule } from './app/app.module';
@@ -11,7 +10,7 @@ if (environment.production) {
 }
 
 const bootstrap = () => platformBrowserDynamic()
-.bootstrapModule(AppModule);
+  .bootstrapModule(AppModule);
 
 if (environment.hmr) {
   if (module['hot']) {
@@ -22,5 +21,5 @@ if (environment.hmr) {
   }
 } else {
   bootstrap()
-  .catch(err => console.warn(err));
+    .catch(err => console.warn(err));
 }
