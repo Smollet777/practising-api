@@ -24,8 +24,8 @@ export class SearchComponent implements OnInit, OnDestroy {
       .valueChanges
       .pipe(
         map(term => term.trim()),
-        filter(term => term),
         debounceTime(700),
+        filter(term => term),
         distinctUntilChanged(),
         takeUntil(this.destroyedSubject)
       )
