@@ -28,6 +28,7 @@
       true,
       "static-before-instance",
       "variables-before-functions"
-    ]
+    ],
+    "no-implicit-dependencies": false
   }
 }

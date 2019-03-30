@@ -3,12 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { startWith, switchMap, tap } from 'rxjs/operators';
 
-import { SearchListService } from '../../../../core/http/search-list.service';
-import { PlayerService } from '../../../../core/services/player.service';
-import { SearchService } from '../../../../core/services/search.service';
+import { SearchListService } from '@core/http/search-list.service';
+import { PlayerService } from '@core/services/player.service';
+import { SearchService } from '@core/services/search.service';
 
-import { Track } from '../../../../interfaces/track';
-import { SearchResult } from '../../../../shared/models/search-result';
+import { Track } from '@interfaces/track';
+import { SearchResult } from '@shared/models/search-result';
 
 @Component({
   selector: 'app-search-list',
