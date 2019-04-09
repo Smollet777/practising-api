@@ -3,9 +3,9 @@ import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
 
-import { environment } from '../../../environments/environment';
+import { environment } from '@env/environment';
+import { SearchResult } from '@shared/models/search-result';
 import { Track } from '../../shared/interfaces/track';
-import { SearchResult } from '../../shared/models/search-result';
 
 @Injectable({
   providedIn: 'root'

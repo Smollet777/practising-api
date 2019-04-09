@@ -5,8 +5,8 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { fromEvent, merge, Subscription } from 'rxjs';
 import { distinctUntilChanged, map, mapTo, pairwise, partition, share, throttleTime } from 'rxjs/operators';
 
-import { ScrollDirection } from '../../../shared/enums/scroll-direction.enum';
-import { VisibilityState } from '../../../shared/enums/visibility-state.enum';
+import { ScrollDirection } from '@shared/enums/scroll-direction.enum';
+import { VisibilityState } from '@shared/enums/visibility-state.enum';
 
 @Component({
   selector: 'app-header',
