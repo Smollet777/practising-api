@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { Observable, Subject } from 'rxjs';
 
-import { Track } from '../interfaces/track';
+import { Track } from '../../shared/interfaces/track';
 
 @Injectable({
   providedIn: 'root'

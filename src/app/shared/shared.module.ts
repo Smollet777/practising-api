@@ -1,0 +1,32 @@
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+
+import { PlayerComponent } from './components/player/player.component';
+import { HoursMinutesSecondsPipe } from './pipes/hours-minutes-seconds.pipe';
+import { PercentsIntoTimePipe } from './pipes/percents-into-time.pipe';
+
+const components = [
+  PlayerComponent
+];
+
+const pipes = [
+  HoursMinutesSecondsPipe,
+  PercentsIntoTimePipe
+];
+
+@NgModule({
+  declarations: [
+    ...components,
+    ...pipes
+  ],
+  exports: [
+    ...components,
+    ...pipes
+  ],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule
+  ]
+})
+export class SharedModule { }
