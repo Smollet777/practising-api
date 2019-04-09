@@ -4,8 +4,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { MaterialModule } from '../modules/material.module';
-
 import { SharedModule } from '../shared/shared.module';
 import { HeaderComponent } from './components/header/header.component';
 import { SearchComponent } from './components/search/search.component';
@@ -30,8 +28,7 @@ const components = [
     ReactiveFormsModule,
     HttpClientModule,
     SharedModule,
-    CommonModule,
-    MaterialModule
+    CommonModule
   ]
 })
 export class CoreModule { }
