@@ -21,6 +21,11 @@ custom pipes, ChangeDetectorRef, HTML5 audio element, `input type="range"` event
 
 ***
 
+#### sticky hide/show header 
+typescript enums; animation; observable from scroll; zone.runOutsideAngular
+
+***
+
 #### page not found
 `Location` from angular/common
 

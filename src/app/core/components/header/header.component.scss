@@ -1,6 +1,18 @@
-mat-toolbar {
+$header-height: 60px;
+
+header {
+  background: #7b1fa2;
   display: flex;
-  padding: 2rem 1rem;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  height: $header-height;
+  top: 0;
+  z-index: 1000;
+
+  &>* {
+    padding: 0 20px;
+  }
 }
 
 .fill-remaining-space {
@@ -8,5 +20,10 @@ mat-toolbar {
 }
 
 .brand {
-  cursor: default;
+  color: inherit;
+  text-decoration: none;
+}
+
+.fill-header-height {
+  height: $header-height;
 }
