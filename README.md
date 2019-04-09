@@ -19,6 +19,11 @@ typescript interfaces and models, async pipe, RxJS startWith, switchMap, debounc
 #### player
 custom pipes, ChangeDetectorRef, HTML5 audio element, `input type="range"` event listeners
 
+***
+
+#### page not found
+`Location` from angular/common
+
 ## Development server
 
 Run `ng serve` or `npm run hmr`(hot module replacement feature) for a dev server. Navigate to `http://localhost:4200/`. 
