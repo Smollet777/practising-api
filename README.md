@@ -14,6 +14,10 @@ Angular version 7
 #### search for tracks
 typescript interfaces and models, async pipe, RxJS startWith, switchMap, debounceTime, distinctUntilChanged, takeUntil, Subject
 
+#### infinite scrolling
+loading chunks of data with [ngx-infinite-scroll](https://www.npmjs.com/package/ngx-infinite-scroll) as trigger;
+RxJS tap, combineLatest
+
 ***
 
 #### player
