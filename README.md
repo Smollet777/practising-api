@@ -2,9 +2,9 @@
 ![GitHub last commit](https://img.shields.io/github/last-commit/smollet777/practising-api.svg?color=important)
 ![GitHub language count](https://img.shields.io/github/languages/count/smollet777/practising-api.svg)
 ![GitHub top language](https://img.shields.io/github/languages/top/smollet777/practising-api.svg)
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/smollet777/practising-api.svg?color=lightgrey)
-![GitHub repo size](https://img.shields.io/github/repo-size/smollet777/practising-api.svg?color=lightgrey)
 [![Known Vulnerabilities](https://snyk.io/test/github/smollet777/practising-api/badge.svg)](https://snyk.io/test/github/smollet777/practising-api)
+[![CodeFactor](https://www.codefactor.io/repository/github/smollet777/practising-api/badge)](https://www.codefactor.io/repository/github/smollet777/practising-api)
+[![codebeat badge](https://codebeat.co/badges/93be21a2-298e-4570-acbd-24f0be71d69c)](https://codebeat.co/projects/github-com-smollet777-practising-api-master)
 [![BCH compliance](https://bettercodehub.com/edge/badge/Smollet777/practising-api?branch=master)](https://bettercodehub.com/)
 
 Angular version 7
@@ -27,6 +27,11 @@ custom pipes, ChangeDetectorRef, HTML5 audio element, `input type="range"` event
 
 #### sticky hide/show header 
 typescript enums; animation; observable from scroll; zone.runOutsideAngular
+
+***
+
+#### loading indicator module
+@input, @output, Set
 
 ***
 
