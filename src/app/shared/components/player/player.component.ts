@@ -2,9 +2,10 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnIni
 import { FormControl } from '@angular/forms';
 
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { takeUntil, tap } from 'rxjs/operators';
 
 import { PlayerService } from '@core/services/player.service';
+import { PreloaderService } from 'app/modules/preloader/preloader.service';
 import { Track } from '../../interfaces/track';
 
 @Component({
@@ -41,6 +42,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
   }
 
   constructor(
+    private readonly preloaderService: PreloaderService,
     private readonly playerService: PlayerService,
     private readonly changeDetectorRef: ChangeDetectorRef
   ) { }
@@ -48,7 +50,10 @@ export class PlayerComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.playerService
       .currentTrack$
-      .pipe(takeUntil(this.destroyedSubject))
+      .pipe(
+        tap(_ => this.preloaderService.show('player')),
+        takeUntil(this.destroyedSubject)
+      )
       .subscribe(track => {
         this.cleanupAudio();
 
@@ -68,6 +73,8 @@ export class PlayerComponent implements OnInit, OnDestroy {
             this.changeDetectorRef.markForCheck();
 
             this.playPause();
+
+            this.preloaderService.hide('player');
           }
         );
 

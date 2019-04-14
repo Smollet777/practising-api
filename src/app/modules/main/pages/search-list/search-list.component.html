@@ -1,4 +1,4 @@
-<div class="track-list" *ngIf="searchResult$ | async as searchResult; else loading">
+<div class="track-list" *ngIf="searchResult$ | async as searchResult">
   <ng-container *ngIf="searchResult.data.length; else noData">
     <div class="track-card" *ngFor="let track of searchResult.data; trackBy:trackByFn">
       <div class="track-card__bg" [ngStyle]="{'background-image': 'url(' + track.album.cover_xl + ')'}"></div>
@@ -19,6 +19,5 @@
   </ng-container>
   <ng-template #noData>Seems there is no data</ng-template>
 </div>
-<ng-template #loading>Loading...</ng-template>
 <div infiniteScroll [infiniteScrollThrottle]="1000" (scrolled)="nextChunk()">
 </div>

@@ -2,6 +2,8 @@
   <div class="player__name">
     {{ track.artist.name }} - {{ track.title }}
   </div>
+  <app-preloader [show]="'true'" name="player" loadingImage="assets/Preloader_100x100.gif">
+  </app-preloader>
   <div class="player__controls">
     <ng-container *ngIf="audio">
       <div class="player-duration">
