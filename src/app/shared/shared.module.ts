@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { PreloaderModule } from 'app/modules/preloader/preloader.module';
 import { PlayerComponent } from './components/player/player.component';
 import { HoursMinutesSecondsPipe } from './pipes/hours-minutes-seconds.pipe';
 import { PercentsIntoTimePipe } from './pipes/percents-into-time.pipe';
@@ -26,7 +27,8 @@ const pipes = [
   ],
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PreloaderModule // for player
   ]
 })
 export class SharedModule { }

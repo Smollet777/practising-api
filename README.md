@@ -31,7 +31,7 @@ typescript enums; animation; observable from scroll; zone.runOutsideAngular
 ***
 
 #### loading indicator module
-@input, @output, Set
+@input, @output, Set, interceptor
 
 ***
 
