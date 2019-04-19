@@ -3,23 +3,19 @@
   .track-list {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     padding: 20px;
   }
 
   .track-card {
-    flex-basis: calc(25% - 20px);
+    height: calc(23vmax - 10px);
+    width: calc(23vmax - 10px);
     margin: 0 10px 20px 10px;
     position: relative;
     transition: all 0.2s ease-in-out;
 
     &:hover {
       transform: scale(1.05);
-    }
-
-    &:after {
-      content: '';
-      display: block;
-      padding-bottom: 100%;
     }
 
     &__bg {
