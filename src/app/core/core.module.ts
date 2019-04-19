@@ -11,7 +11,9 @@ import { MainLayoutComponent } from './layouts/main-layout/main-layout.component
 import { PageNotFoundComponent } from './layouts/page-not-found/page-not-found.component';
 
 import { PreloaderModule } from 'app/modules/preloader/preloader.module';
+import { HttpRetryModule } from './../modules/http-retry/http-retry.module';
 import { HttpPreloaderInterceptor } from './interceptors/http-preloader-interceptor';
+import { HttpRetryInterceptor } from './interceptors/http-retry-interceptor';
 
 const components = [
   HeaderComponent,
@@ -32,10 +34,12 @@ const components = [
     HttpClientModule,
     SharedModule,
     PreloaderModule, // for http
+    HttpRetryModule,
     CommonModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: HttpPreloaderInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: HttpPreloaderInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: HttpRetryInterceptor, multi: true }
   ]
 })
 export class CoreModule { }
