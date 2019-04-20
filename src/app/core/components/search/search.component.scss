@@ -1,10 +1,16 @@
+:host {
+  --color: var(--secondary-color, black)
+}
+
 .form-field {
-  border-bottom: 2px solid black;
+  color: var(--color);
+  border-bottom: 2px solid var(--color);
 }
 
 .search {
   &__input {
     background: transparent;
+    color: inherit;
     border: 0;
     outline: none;
 

@@ -1,0 +1,12 @@
+app-http-retry {
+  div {
+    font-size: 1.5rem;
+    @include flexCenter();
+    flex-direction: column;
+
+    button {
+      display: block;
+      font-size: inherit;
+    }
+  }
+}
