@@ -9,6 +9,17 @@
           </div>
           <div class="track-info__name" (click)="play(track)">
             {{ track.title_short }}
+            <i *ngIf="track.isPlaying; else notPlaying" class="material-icons"
+              [ngStyle]="track.isPlaying && {opacity:.5}">{{
+              (paused$ | async) ? 
+                'play' :
+                'pause'
+              }}_circle_filled</i>
+            <ng-template #notPlaying>
+              <i class="material-icons">
+                play_circle_filled
+              </i>
+            </ng-template>
           </div>
           <div class="track-info__album" routerLink="/album/{{track.album.id}}">
             {{ track.album.title }}

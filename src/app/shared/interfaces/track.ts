@@ -17,4 +17,5 @@ export interface Track {
   type: string;
   artist: Artist;
   album: Album;
+  isPlaying?: boolean;
 }
