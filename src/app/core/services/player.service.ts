@@ -12,6 +12,9 @@ export class PlayerService {
   private _currentTrack: Track;
   private readonly currentTrackSubject = new Subject<Track>();
 
+  private _paused: boolean;
+  private readonly pausedSubject = new Subject<boolean>();
+
   private _queue: Track[] = [];
   private readonly queueSubject = new Subject<Track[]>();
 
@@ -26,6 +29,19 @@ export class PlayerService {
 
   get currentTrack$(): Observable<Track> {
     return this.currentTrackSubject.asObservable();
+  }
+
+  set paused(value: boolean) {
+    this._paused = value;
+    this.pausedSubject.next(this._paused);
+  }
+
+  get paused(): boolean {
+    return this._paused;
+  }
+
+  get paused$(): Observable<boolean> {
+    return this.pausedSubject.asObservable();
   }
 
   set queue(tracks: Track[]) {

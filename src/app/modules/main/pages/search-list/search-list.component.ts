@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
-import { BehaviorSubject, combineLatest, Subscription } from 'rxjs';
-import { startWith, switchMap, tap } from 'rxjs/operators';
+import { BehaviorSubject, combineLatest, Subject } from 'rxjs';
+import { startWith, switchMap, takeUntil, tap } from 'rxjs/operators';
 
 import { SearchListService } from '@core/http/search-list.service';
 import { PlayerService } from '@core/services/player.service';
@@ -17,12 +17,17 @@ import { SearchResult } from '@shared/models/search-result';
 })
 export class SearchListComponent implements OnInit, OnDestroy {
 
-  private subscription$: Subscription;
   readonly searchResult$ = new BehaviorSubject<SearchResult<Track>>(new SearchResult());
+
+  private readonly destroyedSubject = new Subject<void>();
 
   private readonly term$ = this.searchService.query$.pipe(startWith('blackpink'));
   private readonly index$ = this.searchService.index$;
   private readonly limit = this.searchService.chunkSize;
+
+  currentTrack$ = this.playerService.currentTrack$;
+  paused$ = this.playerService.paused$;
+  hovered = false;
 
   constructor(
     private readonly searchService: SearchService,
@@ -31,7 +36,23 @@ export class SearchListComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.subscription$ = combineLatest(
+    // play icon toggle
+    this.currentTrack$.pipe(
+      tap(track => {
+        const data = this.searchResult$.value.data;
+        data.forEach(element => {
+          if (element.id === track.id) {
+            element.isPlaying = true;
+          } else {
+            delete element.isPlaying;
+          }
+        });
+      }),
+      takeUntil(this.destroyedSubject))
+      .subscribe();
+
+    // search result data
+    combineLatest(
       this.term$.pipe(
         tap(_ => this.searchResult$.next(new SearchResult()))
       ),
@@ -41,11 +62,13 @@ export class SearchListComponent implements OnInit, OnDestroy {
         switchMap(([term, index]) => this.searchListService
           .search(term, index, this.limit)),
         tap((result: SearchResult<Track>) => {
+          // unshift loaded data to current tracklist
           const currentTracks = this.searchResult$.value.data;
           result.data.unshift(...currentTracks);
           this.searchResult$.next(result);
         }),
-        tap(_ => this.playerService.queue = this.searchResult$.value.data)
+        tap(_ => this.playerService.queue = this.searchResult$.value.data), // player queue
+        takeUntil(this.destroyedSubject)
       )
       .subscribe();
   }
@@ -69,6 +92,7 @@ export class SearchListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscription$.unsubscribe();
+    this.destroyedSubject.next();
+    this.destroyedSubject.complete();
   }
 }
