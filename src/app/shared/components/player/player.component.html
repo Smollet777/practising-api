@@ -28,7 +28,9 @@
           skip_previous
         </i>
         <i class="material-icons" (click)="playPause()" aria-hidden="false">
-          {{ isPlaying ? 'pause' : 'play_arrow' }}
+          {{ (paused$ | async) ?
+             'play_arrow' : 
+             'pause'}}
         </i>
         <i class="material-icons" [class.material-icons_disabled]="isLast" (click)="nextTrack()" aria-hidden="false">
           skip_next
