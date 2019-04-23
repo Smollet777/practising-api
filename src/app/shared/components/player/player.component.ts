@@ -19,7 +19,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
   track: Track;
 
   // controls visualisation
-  isPlaying: boolean;
+  paused$ = this.playerService.paused$;
   isFirst: boolean;
   isLast: boolean;
 
@@ -87,10 +87,10 @@ export class PlayerComponent implements OnInit, OnDestroy {
           'ended',
           () => {
             this.changeDetectorRef.markForCheck();
-            if (this.isAutoplay && this.isPlaying) {
+            if (this.isAutoplay && !this.playerService.paused) {
               setTimeout(() => this.nextTrack(), this.autoplayDelay);
             }
-            this.isPlaying = false;
+            this.playerService.paused = this.audio.paused;
           }
         );
       });
@@ -115,11 +115,10 @@ export class PlayerComponent implements OnInit, OnDestroy {
   playPause(): void {
     if (!this.audio.paused) {
       this.audio.pause();
-      this.isPlaying = false;
     } else {
       this.audio.play();
-      this.isPlaying = true;
     }
+    this.playerService.paused = this.audio.paused;
   }
 
   prevTrack(): void {
@@ -166,8 +165,8 @@ export class PlayerComponent implements OnInit, OnDestroy {
       return;
     }
 
-    this.isPlaying = false;
     this.audio.pause();
+    this.playerService.paused = this.audio.paused;
     this.audio.src = '';
     this.audio = null;
   }
