@@ -66,37 +66,41 @@ export class PlayerComponent implements OnInit, OnDestroy {
         audio.preload = 'metadata';
         audio.src = track.preview;
 
-        audio.addEventListener(
-          'loadedmetadata',
-          () => {
-            this.audio = audio;
-            this.changeDetectorRef.markForCheck();
-
-            this.playPause();
-
-            this.preloaderService.hide('player');
-          }
-        );
-
-        audio.addEventListener(
-          'timeupdate',
-          this.onAudioTimeUpdate
-        );
-
-        audio.addEventListener(
-          'ended',
-          () => {
-            this.changeDetectorRef.markForCheck();
-            if (this.isAutoplay && !this.playerService.paused) {
-              setTimeout(() => this.nextTrack(), this.autoplayDelay);
-            }
-            this.playerService.paused = this.audio.paused;
-          }
-        );
+        this.attachAudioListeners(audio);
       });
   }
 
-  onAudioTimeUpdate = () => {
+  private attachAudioListeners(audio): void {
+    audio.addEventListener(
+      'loadedmetadata',
+      () => {
+        this.audio = audio;
+        this.changeDetectorRef.markForCheck();
+
+        this.playPause();
+
+        this.preloaderService.hide('player');
+      }
+    );
+
+    audio.addEventListener(
+      'timeupdate',
+      this.onAudioTimeUpdate
+    );
+
+    audio.addEventListener(
+      'ended',
+      () => {
+        this.changeDetectorRef.markForCheck();
+        if (this.isAutoplay && !this.playerService.paused) {
+          setTimeout(() => this.nextTrack(), this.autoplayDelay);
+        }
+        this.playerService.paused = this.audio.paused;
+      }
+    );
+  }
+
+  private readonly onAudioTimeUpdate = () => {
     this.changeDetectorRef.markForCheck();
     this.progressbar.setValue(
       this.getPercentageProgress()
