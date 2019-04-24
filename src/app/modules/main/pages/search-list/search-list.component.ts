@@ -36,22 +36,25 @@ export class SearchListComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    // play icon toggle
+    this.playIconToggle();
+    this.searchResultData();
+  }
+
+  private playIconToggle(): void {
     this.currentTrack$.pipe(
       tap(track => {
         const data = this.searchResult$.value.data;
-        data.forEach(element => {
-          if (element.id === track.id) {
-            element.isPlaying = true;
-          } else {
-            delete element.isPlaying;
-          }
-        });
+        data.forEach(element =>
+          element.id === track.id ?
+            element.isPlaying = true :
+            delete element.isPlaying
+        );
       }),
       takeUntil(this.destroyedSubject))
       .subscribe();
+  }
 
-    // search result data
+  private searchResultData(): void {
     combineLatest(
       this.term$.pipe(
         tap(_ => this.searchResult$.next(new SearchResult()))
