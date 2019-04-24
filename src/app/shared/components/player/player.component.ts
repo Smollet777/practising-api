@@ -73,14 +73,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
   private attachAudioListeners(audio): void {
     audio.addEventListener(
       'loadedmetadata',
-      () => {
-        this.audio = audio;
-        this.changeDetectorRef.markForCheck();
-
-        this.playPause();
-
-        this.preloaderService.hide('player');
-      }
+      _ => this.onAudioLoadedMetadata(audio)
     );
 
     audio.addEventListener(
@@ -90,21 +83,32 @@ export class PlayerComponent implements OnInit, OnDestroy {
 
     audio.addEventListener(
       'ended',
-      () => {
-        this.changeDetectorRef.markForCheck();
-        if (this.isAutoplay && !this.playerService.paused) {
-          setTimeout(() => this.nextTrack(), this.autoplayDelay);
-        }
-        this.playerService.paused = this.audio.paused;
-      }
+      this.onAudioEnded
     );
   }
+
+  private readonly onAudioLoadedMetadata = (audio: HTMLAudioElement) => {
+    this.audio = audio;
+    this.changeDetectorRef.markForCheck();
+
+    this.playPause();
+
+    this.preloaderService.hide('player');
+  };
 
   private readonly onAudioTimeUpdate = () => {
     this.changeDetectorRef.markForCheck();
     this.progressbar.setValue(
       this.getPercentageProgress()
     );
+  };
+
+  private readonly onAudioEnded = () => {
+    this.changeDetectorRef.markForCheck();
+    if (this.isAutoplay && !this.playerService.paused) {
+      setTimeout(() => this.nextTrack(), this.autoplayDelay);
+    }
+    this.playerService.paused = this.audio.paused;
   };
 
   onProgressbarInput(): void {
