@@ -36,7 +36,11 @@ export class SearchListComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    // play icon toggle
+    this.playIconToggle();
+    this.searchResultData();
+  }
+
+  private playIconToggle(): void {
     this.currentTrack$.pipe(
       tap(track => {
         const data = this.searchResult$.value.data;
@@ -50,8 +54,9 @@ export class SearchListComponent implements OnInit, OnDestroy {
       }),
       takeUntil(this.destroyedSubject))
       .subscribe();
+  }
 
-    // search result data
+  private searchResultData(): void {
     combineLatest(
       this.term$.pipe(
         tap(_ => this.searchResult$.next(new SearchResult()))
