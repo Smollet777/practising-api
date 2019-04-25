@@ -1,5 +1,5 @@
 # PractisingApi
-![GitHub last commit](https://img.shields.io/github/last-commit/smollet777/practising-api.svg?color=important)
+![GitHub last commit (branch)](https://img.shields.io/github/last-commit/Smollet777/practising-api/dev.svg?color=important)
 ![GitHub language count](https://img.shields.io/github/languages/count/smollet777/practising-api.svg)
 ![GitHub top language](https://img.shields.io/github/languages/top/smollet777/practising-api.svg)
 [![Known Vulnerabilities](https://snyk.io/test/github/smollet777/practising-api/badge.svg)](https://snyk.io/test/github/smollet777/practising-api)
@@ -7,12 +7,14 @@
 [![codebeat badge](https://codebeat.co/badges/93be21a2-298e-4570-acbd-24f0be71d69c)](https://codebeat.co/projects/github-com-smollet777-practising-api-master)
 [![BCH compliance](https://bettercodehub.com/edge/badge/Smollet777/practising-api?branch=master)](https://bettercodehub.com/)
 
-Angular version 7
+Angular version 7.2
 
 ## Features and used techniques
 
 #### search for tracks
 typescript interfaces and models, async pipe, RxJS startWith, switchMap, debounceTime, distinctUntilChanged, takeUntil, Subject
+
+***
 
 #### infinite scrolling
 loading chunks of data with [ngx-infinite-scroll](https://www.npmjs.com/package/ngx-infinite-scroll) as trigger;
