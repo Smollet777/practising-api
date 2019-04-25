@@ -55,12 +55,11 @@ export class SearchListComponent implements OnInit, OnDestroy {
   }
 
   private searchResultData(): void {
-    combineLatest(
-      this.term$.pipe(
-        tap(_ => this.searchResult$.next(new SearchResult()))
-      ),
+    combineLatest([
+      this.term$
+        .pipe(tap(_ => this.searchResult$.next(new SearchResult()))),
       this.index$
-    )
+    ])
       .pipe(
         switchMap(([term, index]) => this.searchListService
           .search(term, index, this.limit)),

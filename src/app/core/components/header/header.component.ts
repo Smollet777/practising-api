@@ -2,11 +2,11 @@ import { ChangeDetectorRef, Component, NgZone, OnDestroy, OnInit } from '@angula
 
 import { animate, state, style, transition, trigger } from '@angular/animations';
 
-import { fromEvent, merge, Subscription } from 'rxjs';
-import { distinctUntilChanged, map, mapTo, pairwise, partition, share, throttleTime } from 'rxjs/operators';
+import { merge, Subscription } from 'rxjs';
+import { mapTo } from 'rxjs/operators';
 
-import { ScrollDirection } from '@shared/enums/scroll-direction.enum';
 import { VisibilityState } from '@shared/enums/visibility-state.enum';
+import { ScrollService } from '@shared/services/scroll.service';
 
 @Component({
   selector: 'app-header',
@@ -32,33 +32,20 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   constructor(
     private readonly zone: NgZone,
-    private readonly cdr: ChangeDetectorRef
+    private readonly cdr: ChangeDetectorRef,
+    private readonly scrollService: ScrollService
   ) { }
 
   ngOnInit(): void {
     this.zone.runOutsideAngular(() => {
-
-      const [scrollUp$, scrollDown$] = partition((scrollDirection: ScrollDirection) =>
-        scrollDirection === ScrollDirection.Up)(
-
-          fromEvent(window, 'scroll')
-            .pipe(
-              throttleTime(100),
-              map(() => window.pageYOffset),
-              pairwise(),
-              map(([y1, y2]): ScrollDirection => (y2 < y1 ? ScrollDirection.Up : ScrollDirection.Down)),
-              distinctUntilChanged(),
-              share()
-            )
-
-        );
+      const { scrollUp$, scrollDown$ } = this.scrollService;
 
       this.scrollSubscription = merge(
         scrollUp$.pipe(mapTo(VisibilityState.Visible)),
         scrollDown$.pipe(mapTo(VisibilityState.Hidden))
       )
-        .subscribe((visibility: VisibilityState) => {
-          this.visibility = visibility;
+        .subscribe(headerVisibility => {
+          this.visibility = headerVisibility;
           this.cdr.detectChanges();
         });
     });
