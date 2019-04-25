@@ -4,7 +4,7 @@
 ![GitHub top language](https://img.shields.io/github/languages/top/smollet777/practising-api.svg)
 [![Known Vulnerabilities](https://snyk.io/test/github/smollet777/practising-api/badge.svg)](https://snyk.io/test/github/smollet777/practising-api)
 [![CodeFactor](https://www.codefactor.io/repository/github/smollet777/practising-api/badge)](https://www.codefactor.io/repository/github/smollet777/practising-api)
-[![codebeat badge](https://codebeat.co/badges/93be21a2-298e-4570-acbd-24f0be71d69c)](https://codebeat.co/projects/github-com-smollet777-practising-api-master)
+[![codebeat badge](https://codebeat.co/badges/b52d37ae-bb8e-4848-97f9-13f51c4b9aad)](https://codebeat.co/projects/github-com-smollet777-practising-api-dev)
 [![BCH compliance](https://bettercodehub.com/edge/badge/Smollet777/practising-api?branch=master)](https://bettercodehub.com/)
 
 Angular version 7.2
