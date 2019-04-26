@@ -4,11 +4,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { PreloaderModule } from 'app/modules/preloader/preloader.module';
 import { PlayerComponent } from './components/player/player.component';
+import { ThumbnailComponent } from './components/thumbnail/thumbnail.component';
 import { HoursMinutesSecondsPipe } from './pipes/hours-minutes-seconds.pipe';
 import { PercentsIntoTimePipe } from './pipes/percents-into-time.pipe';
 
 const components = [
-  PlayerComponent
+  PlayerComponent,
+  ThumbnailComponent
 ];
 
 const pipes = [

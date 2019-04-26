@@ -5,20 +5,8 @@ $gap:20px;
   padding: $gap;
 
   &__thumbnail {
-    margin: 0;
-
-    &__bg {
-      height: 100%;
-      background-size: cover;
-      background-position: center center;
-      filter: blur(3px);
-    }
-
-    .picture {
-      position: relative;
-      bottom: 100%;
-      border-radius: var(--border-radius);
-    }
+    min-height: 250px;
+    min-width: 250px;
   }
 
   &__info {
@@ -32,8 +20,4 @@ $gap:20px;
       cursor: pointer;
     }
   }
-}
-
-.img {
-  border-radius: var(--border-radius);
 }

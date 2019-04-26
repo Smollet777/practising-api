@@ -1,0 +1,15 @@
+<figure class="thumbnail">
+  <ng-container *ngIf="src; else noSrc">
+    <div class="thumbnail__bg" [ngStyle]="{'background-image': 'url(' + src + ')'}"></div>
+    <div class="picture">
+      <img class="img" [src]="src" [alt]="alt||''">
+    </div>
+  </ng-container>
+  <ng-template #noSrc>
+    <div class="noSrc">
+      <i class="material-icons">
+        crop_original
+      </i>
+    </div>
+  </ng-template>
+</figure>

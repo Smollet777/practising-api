@@ -1,8 +1,5 @@
   <div class="artist" *ngIf="artist$ | async as artist">
-    <figure class="artist__thumbnail">
-      <div class="artist__thumbnail__bg" [ngStyle]="{'background-image': 'url(' + artist.picture_medium + ')'}"></div>
-      <div class="picture"><img class="img" src="{{artist.picture_medium}}" alt="{{artist.name}}"></div>
-    </figure>
+    <app-thumbnail class="artist__thumbnail" [src]="artist.picture_medium" [alt]="artist.name"></app-thumbnail>
     <div class="artist__info">
       <h1 class="name" title="Back" (click)="goBack()">{{artist.name}}</h1>
       <div class="fans">{{artist.nb_fan}} fans</div>

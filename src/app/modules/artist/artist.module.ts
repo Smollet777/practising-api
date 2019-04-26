@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
+import { SharedModule } from '@shared/shared.module';
 import { ArtistRoutingModule } from './artist-routing.module';
 import { ArtistComponent } from './pages/artist/artist.component';
 
@@ -8,7 +9,8 @@ import { ArtistComponent } from './pages/artist/artist.component';
   declarations: [ArtistComponent],
   imports: [
     CommonModule,
-    ArtistRoutingModule
+    ArtistRoutingModule,
+    SharedModule
   ]
 })
 export class ArtistModule { }
