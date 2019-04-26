@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: SearchListComponent
+  },
+  {
+    path: 'artist',
+    loadChildren: './../artist/artist.module#ArtistModule'
   }
 ];
 

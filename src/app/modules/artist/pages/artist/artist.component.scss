@@ -1,0 +1,39 @@
+$gap:20px;
+
+.artist {
+  display: flex;
+  padding: $gap;
+
+  &__thumbnail {
+    margin: 0;
+
+    &__bg {
+      height: 100%;
+      background-size: cover;
+      background-position: center center;
+      filter: blur(3px);
+    }
+
+    .picture {
+      position: relative;
+      bottom: 100%;
+      border-radius: var(--border-radius);
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: $gap*2;
+
+    .name {
+      cursor: pointer;
+    }
+  }
+}
+
+.img {
+  border-radius: var(--border-radius);
+}
