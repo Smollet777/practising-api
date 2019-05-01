@@ -1,9 +1,8 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
 
 import { ArtistService } from '@core/http/artist.service';
 import { Artist } from '@shared/interfaces/artist';
@@ -23,10 +22,8 @@ export class ArtistComponent implements OnInit {
     private readonly location: Location) { }
 
   ngOnInit(): void {
-    this.artist$ = this.route.paramMap.pipe(
-      switchMap((params: ParamMap) =>
-        this.service.getArtist(+params.get('id')))
-    );
+    const id = this.route.snapshot.paramMap.get('id');
+    this.artist$ = this.service.getArtist(+id);
   }
 
   goBack(): void {

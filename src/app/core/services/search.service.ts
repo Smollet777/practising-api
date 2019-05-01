@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
@@ -12,10 +13,13 @@ export class SearchService {
   index$ = new BehaviorSubject(0);
   private _chunkSize = 25;
 
+  constructor(private readonly router: Router) { }
+
   set query(query: string) {
     this._query = query;
     this.querySubject.next(query);
     this.index$.next(0);
+    this.router.navigate(['/search']);
   }
 
   get query(): string {

@@ -6,6 +6,11 @@ import { SearchListComponent } from './pages/search-list/search-list.component';
 const routes: Routes = [
   {
     path: '',
+    redirectTo: '/search',
+    pathMatch: 'full'
+  },
+  {
+    path: 'search',
     component: SearchListComponent
   },
   {
