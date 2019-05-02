@@ -1,0 +1,79 @@
+:host {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.track-card {
+  height: calc(23vmax - 10px);
+  width: calc(23vmax - 10px);
+  margin: 0 10px 20px;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  &__bg {
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    border-radius: 4px;
+    filter: blur(3px);
+  }
+
+  &__content {
+    position: absolute;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: calc(100% - 20px);
+    width: calc(100% - 20px);
+    padding: 10px;
+    border-radius: 4px;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.5);
+    transition: background-color 0.2s ease-in-out;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.5);
+      color: #fff;
+    }
+  }
+}
+
+.track-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  overflow: inherit;
+
+  &__name {
+    font-size: 1.5em;
+    cursor: pointer;
+
+    >i {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 5em;
+      opacity: 0;
+    }
+
+    &:hover>i {
+      opacity: .5;
+    }
+  }
+
+  &__artist,
+  &__album {
+    cursor: pointer;
+  }
+}

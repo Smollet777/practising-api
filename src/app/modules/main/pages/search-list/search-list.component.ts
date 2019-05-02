@@ -25,33 +25,13 @@ export class SearchListComponent implements OnInit, OnDestroy {
   private readonly index$ = this.searchService.index$;
   private readonly limit = this.searchService.chunkSize;
 
-  currentTrack$ = this.playerService.currentTrack$;
-  paused$ = this.playerService.paused$;
-  hovered = false;
-
   constructor(
     private readonly searchService: SearchService,
-    private readonly searchListService: SearchListService,
-    private readonly playerService: PlayerService
+    private readonly searchListService: SearchListService
   ) { }
 
   ngOnInit(): void {
-    this.playIconToggle();
     this.searchResultData();
-  }
-
-  private playIconToggle(): void {
-    this.currentTrack$.pipe(
-      tap(track => {
-        const data = this.searchResult$.value.data;
-        data.forEach(element =>
-          element.id === track.id ?
-            element.isPlaying = true :
-            delete element.isPlaying
-        );
-      }),
-      takeUntil(this.destroyedSubject))
-      .subscribe();
   }
 
   private searchResultData(): void {
@@ -69,18 +49,9 @@ export class SearchListComponent implements OnInit, OnDestroy {
           result.data.unshift(...currentTracks);
           this.searchResult$.next(result);
         }),
-        tap(_ => this.playerService.queue = this.searchResult$.value.data), // player queue
         takeUntil(this.destroyedSubject)
       )
       .subscribe();
-  }
-
-  trackByFn(index, item): string {
-    return item.id;
-  }
-
-  play(track: Track): void {
-    this.playerService.currentTrack = track;
   }
 
   nextChunk(): void {
