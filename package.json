@@ -9,7 +9,9 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ng build"
+    "postinstall": "ng build",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "private": true,
   "engines": {
@@ -21,7 +23,7 @@
     "@angular/cli": "~7.3.8",
     "@angular/common": "~7.2.14",
     "@angular/compiler": "~7.2.14",
-    "@angular/compiler-cli": "^7.2.14",
+    "@angular/compiler-cli": "^8.0.0",
     "@angular/core": "~7.2.14",
     "@angular/forms": "~7.2.14",
     "@angular/http": "~7.2.14",
@@ -34,7 +36,8 @@
     "rxjs": "~6.5.1",
     "tslib": "^1.9.0",
     "typescript": "~3.2.4",
-    "zone.js": "~0.8.26"
+    "zone.js": "~0.8.26",
+    "snyk": "^1.222.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.13.8",
@@ -55,5 +58,6 @@
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.12.0"
-  }
+  },
+  "snyk": true
 }
