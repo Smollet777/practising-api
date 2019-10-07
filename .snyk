@@ -18,3 +18,16 @@ patch:
         patched: '2019-09-01T15:11:32.415Z'
     - snyk > snyk-nuget-plugin > dotnet-deps-parser > lodash:
         patched: '2019-09-01T15:11:32.415Z'
+  SNYK-JS-HTTPSPROXYAGENT-469131:
+    - snyk > proxy-agent > https-proxy-agent:
+        patched: '2019-10-07T21:51:51.313Z'
+    - '@angular/cli > pacote > make-fetch-happen > https-proxy-agent':
+        patched: '2019-10-07T21:51:51.313Z'
+    - snyk > proxy-agent > pac-proxy-agent > https-proxy-agent:
+        patched: '2019-10-07T21:51:51.313Z'
+    - '@angular/cli > pacote > npm-registry-fetch > make-fetch-happen > https-proxy-agent':
+        patched: '2019-10-07T21:51:51.313Z'
+    - '@angular/cli > @schematics/update > pacote > make-fetch-happen > https-proxy-agent':
+        patched: '2019-10-07T21:51:51.313Z'
+    - '@angular/cli > @schematics/update > pacote > npm-registry-fetch > make-fetch-happen > https-proxy-agent':
+        patched: '2019-10-07T21:51:51.313Z'
