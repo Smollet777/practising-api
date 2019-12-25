@@ -21,3 +21,12 @@ patch:
   SNYK-JS-TREEKILL-536781:
     - snyk > snyk-sbt-plugin > tree-kill:
         patched: '2019-12-16T21:52:21.416Z'
+  SNYK-JS-HTTPSPROXYAGENT-469131:
+    - '@angular/cli > pacote > make-fetch-happen > https-proxy-agent':
+        patched: '2019-12-25T14:58:58.727Z'
+    - '@angular/cli > pacote > npm-registry-fetch > make-fetch-happen > https-proxy-agent':
+        patched: '2019-12-25T14:58:58.727Z'
+    - '@angular/cli > @schematics/update > pacote > make-fetch-happen > https-proxy-agent':
+        patched: '2019-12-25T14:58:58.727Z'
+    - '@angular/cli > @schematics/update > pacote > npm-registry-fetch > make-fetch-happen > https-proxy-agent':
+        patched: '2019-12-25T14:58:58.727Z'
