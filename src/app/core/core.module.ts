@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 
 import { SharedModule } from '../shared/shared.module';
 import { HeaderComponent } from './components/header/header.component';
+import { PopperComponent } from './components/popper/popper.component';
 import { SearchComponent } from './components/search/search.component';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { PageNotFoundComponent } from './layouts/page-not-found/page-not-found.component';
@@ -19,11 +20,13 @@ const components = [
   HeaderComponent,
   MainLayoutComponent,
   SearchComponent,
-  PageNotFoundComponent
+  PageNotFoundComponent,
+  PopperComponent
 ];
 
 @NgModule({
   declarations: components,
+  entryComponents: [PopperComponent],
   exports: [
     components
   ],

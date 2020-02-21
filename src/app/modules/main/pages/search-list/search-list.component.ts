@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { BehaviorSubject, combineLatest, Subject } from 'rxjs';
 import { startWith, switchMap, takeUntil, tap } from 'rxjs/operators';
@@ -19,9 +20,9 @@ export class SearchListComponent implements OnInit, OnDestroy {
 
   readonly searchResult$ = new BehaviorSubject<SearchResult<Track>>(new SearchResult());
 
-  private readonly destroyedSubject = new Subject<void>();
+  private readonly unsubscribe$ = new Subject<void>();
 
-  private readonly term$ = this.searchService.query$.pipe(startWith('blackpink'));
+  private readonly term$ = this.searchService.query$;
   private readonly index$ = this.searchService.index$;
   private readonly limit = this.searchService.chunkSize;
 
@@ -32,7 +33,8 @@ export class SearchListComponent implements OnInit, OnDestroy {
   constructor(
     private readonly searchService: SearchService,
     private readonly searchListService: SearchListService,
-    private readonly playerService: PlayerService
+    private readonly playerService: PlayerService,
+    private readonly route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
@@ -50,19 +52,19 @@ export class SearchListComponent implements OnInit, OnDestroy {
             delete element.isPlaying
         );
       }),
-      takeUntil(this.destroyedSubject))
+      takeUntil(this.unsubscribe$))
       .subscribe();
   }
 
   private searchResultData(): void {
+
     combineLatest([
-      this.term$
-        .pipe(tap(_ => this.searchResult$.next(new SearchResult()))),
+      this.route.paramMap,
       this.index$
     ])
       .pipe(
-        switchMap(([term, index]) => this.searchListService
-          .search(term, index, this.limit)),
+        switchMap(([param, index]) => this.searchListService
+          .search(param.get('term'), index, this.limit)),
         tap((result: SearchResult<Track>) => {
           // unshift loaded data to current tracklist
           const currentTracks = this.searchResult$.value.data;
@@ -70,7 +72,7 @@ export class SearchListComponent implements OnInit, OnDestroy {
           this.searchResult$.next(result);
         }),
         tap(_ => this.playerService.queue = this.searchResult$.value.data), // player queue
-        takeUntil(this.destroyedSubject)
+        takeUntil(this.unsubscribe$)
       )
       .subscribe();
   }
@@ -94,7 +96,7 @@ export class SearchListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.destroyedSubject.next();
-    this.destroyedSubject.complete();
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 }

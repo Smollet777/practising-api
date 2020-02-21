@@ -1,0 +1,20 @@
+:host {
+  color: var(--secondary-text-color, black);
+  background-color: var(--secondary-color, white);
+  position: absolute;
+  box-shadow: 0px -7px 22px 0px rgba(143, 143, 143, 0.6);
+
+  .search {
+    &-list {
+      padding: 20px;
+    }
+
+    &-item {
+      margin: 10px 0;
+    }
+  }
+
+  .link {
+    cursor: pointer;
+  }
+}

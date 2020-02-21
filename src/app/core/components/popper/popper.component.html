@@ -1,0 +1,12 @@
+<div class="search-list" *ngIf="searchResult$ | async as searchResult">
+  <ng-container *ngIf="searchResult.data.length;">
+    <div class="search-item" *ngFor="let track of searchResult.data; trackBy:trackByFn">
+      <span class="search-item__artist link"
+        routerLink="/search/{{track.artist.name | snakeCase}}">{{ track.artist.name }}</span>
+      -
+      <span class="search-item__name link"
+        routerLink="/search/{{track.title_short | snakeCase}}">{{ track.title_short }}</span>
+    </div>
+    <div class="search-more link" routerLink="/search/{{term | snakeCase}}">more...</div>
+  </ng-container>
+</div>

@@ -15,7 +15,7 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   searchField = new FormControl();
 
-  private readonly destroyedSubject = new Subject<void>();
+  private readonly unsubscribe$ = new Subject<void>();
 
   constructor(private readonly searchService: SearchService) { }
 
@@ -27,7 +27,7 @@ export class SearchComponent implements OnInit, OnDestroy {
         debounceTime(700),
         filter(term => term),
         distinctUntilChanged(),
-        takeUntil(this.destroyedSubject)
+        takeUntil(this.unsubscribe$)
       )
       .subscribe(term => {
         this.searchService.query = term;
@@ -35,8 +35,8 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.destroyedSubject.next();
-    this.destroyedSubject.complete();
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 
 }

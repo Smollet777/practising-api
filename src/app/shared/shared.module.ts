@@ -6,6 +6,7 @@ import { PreloaderModule } from 'app/modules/preloader/preloader.module';
 import { PlayerComponent } from './components/player/player.component';
 import { HoursMinutesSecondsPipe } from './pipes/hours-minutes-seconds.pipe';
 import { PercentsIntoTimePipe } from './pipes/percents-into-time.pipe';
+import { SnakeCasePipe } from './pipes/snake-case.pipe';
 
 const components = [
   PlayerComponent
@@ -13,7 +14,8 @@ const components = [
 
 const pipes = [
   HoursMinutesSecondsPipe,
-  PercentsIntoTimePipe
+  PercentsIntoTimePipe,
+  SnakeCasePipe
 ];
 
 @NgModule({
