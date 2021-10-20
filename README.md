@@ -3,10 +3,10 @@
 ![GitHub language count](https://img.shields.io/github/languages/count/smollet777/practising-api.svg)
 ![GitHub top language](https://img.shields.io/github/languages/top/smollet777/practising-api.svg)
 [![CodeFactor](https://www.codefactor.io/repository/github/smollet777/practising-api/badge)](https://www.codefactor.io/repository/github/smollet777/practising-api)
-[![codebeat badge](https://codebeat.co/badges/b52d37ae-bb8e-4848-97f9-13f51c4b9aad)](https://codebeat.co/projects/github-com-smollet777-practising-api-dev)
+[![codebeat badge](https://codebeat.co/badges/f760fea8-7dba-484f-a5a9-b91bb6ba506b)](https://codebeat.co/projects/github-com-smollet777-practising-api-dev)
 [![BCH compliance](https://bettercodehub.com/edge/badge/Smollet777/practising-api?branch=master)](https://bettercodehub.com/)
 
-Angular version 8
+Angular version 9
 
 ## Features and used techniques
 
