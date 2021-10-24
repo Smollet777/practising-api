@@ -6,7 +6,7 @@
 [![codebeat badge](https://codebeat.co/badges/f760fea8-7dba-484f-a5a9-b91bb6ba506b)](https://codebeat.co/projects/github-com-smollet777-practising-api-dev)
 [![BCH compliance](https://bettercodehub.com/edge/badge/Smollet777/practising-api?branch=master)](https://bettercodehub.com/)
 
-Angular version 9
+Angular version 10
 
 ## Features and used techniques
 
