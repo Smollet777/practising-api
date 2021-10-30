@@ -5,8 +5,9 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/smollet777/practising-api/badge)](https://www.codefactor.io/repository/github/smollet777/practising-api)
 [![codebeat badge](https://codebeat.co/badges/f760fea8-7dba-484f-a5a9-b91bb6ba506b)](https://codebeat.co/projects/github-com-smollet777-practising-api-dev)
 [![BCH compliance](https://bettercodehub.com/edge/badge/Smollet777/practising-api?branch=master)](https://bettercodehub.com/)
+[![Known Vulnerabilities](https://snyk.io/test/github/Smollet777/practising-api/badge.svg?targetFile=package.json)](https://snyk.io/test/github/Smollet777/practising-api?targetFile=package.json)
 
-Angular version 10
+Angular version 11
 
 ## Features and used techniques
 
