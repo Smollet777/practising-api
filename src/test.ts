@@ -13,7 +13,9 @@ declare const require: any;
 getTestBed()
   .initTestEnvironment(
     BrowserDynamicTestingModule,
-    platformBrowserDynamicTesting()
+    platformBrowserDynamicTesting(), {
+    teardown: { destroyAfterEach: false }
+}
   );
 // Then we find all the tests.
 const context = require.context('./', true, /\.spec\.ts$/);

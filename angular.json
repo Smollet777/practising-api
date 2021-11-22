@@ -73,7 +73,6 @@
           "configurations": {
             "hmr": {
               "hmr": true,
-              "hmrWarning": false,
               "browserTarget": "practising-api:build:hmr"
             },
             "production": {

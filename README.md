@@ -7,7 +7,7 @@
 [![BCH compliance](https://bettercodehub.com/edge/badge/Smollet777/practising-api?branch=master)](https://bettercodehub.com/)
 [![Known Vulnerabilities](https://snyk.io/test/github/Smollet777/practising-api/badge.svg?targetFile=package.json)](https://snyk.io/test/github/Smollet777/practising-api?targetFile=package.json)
 
-Angular version 12
+Angular version 13
 
 ## Features and used techniques
 
