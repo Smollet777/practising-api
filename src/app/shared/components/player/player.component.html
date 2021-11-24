@@ -21,22 +21,25 @@
       </div>
       <div class="player-buttons">
         <i class="material-icons" [class.material-icons_inactive]="!isRandom" (click)="toggleIsRandom()"
-          aria-hidden="false">
+        title="shuffled order" aria-label="shuffled order" aria-hidden="false">
           shuffle
         </i>
-        <i class="material-icons" [class.material-icons_disabled]="isFirst" (click)="prevTrack()" aria-hidden="false">
+        <i class="material-icons" [class.material-icons_disabled]="isFirst" (click)="prevTrack()"
+        title="previous" aria-label="previous" aria-hidden="false">
           skip_previous
         </i>
-        <i class="material-icons" (click)="playPause()" aria-hidden="false">
+        <i class="material-icons" (click)="playPause()"
+        title="play/pause" aria-label="play/pause" aria-hidden="false">
           {{ (paused$ | async) ?
              'play_arrow' : 
              'pause'}}
         </i>
-        <i class="material-icons" [class.material-icons_disabled]="isLast" (click)="nextTrack()" aria-hidden="false">
+        <i class="material-icons" [class.material-icons_disabled]="isLast" (click)="nextTrack()"
+        title="next" aria-label="next" aria-hidden="false">
           skip_next
         </i>
         <i class="material-icons" [class.material-icons_inactive]="!isAutoplay" (click)="toggleIsAutoplay()"
-          aria-hidden="false">
+        title="autoplay" aria-label="autoplay" aria-hidden="false">
           playlist_play
         </i>
       </div>
