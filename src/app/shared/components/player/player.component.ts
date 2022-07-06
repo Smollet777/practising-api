@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 
 import { Subject } from 'rxjs';
 import { takeUntil, tap } from 'rxjs/operators';
@@ -25,7 +25,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
 
   audio: HTMLAudioElement;
 
-  progressbar = new FormControl();
+  progressbar = new UntypedFormControl();
 
   private _isRandom = false;
   private _isAutoplay = true;

@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 
 import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, filter, map, takeUntil } from 'rxjs/operators';
@@ -13,7 +13,7 @@ import { SearchService } from '../../services/search.service';
 })
 export class SearchComponent implements OnInit, OnDestroy {
 
-  searchField = new FormControl();
+  searchField = new UntypedFormControl();
 
   private readonly destroyedSubject = new Subject<void>();
 
